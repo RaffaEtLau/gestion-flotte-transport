@@ -1,4 +1,9 @@
-import { displayTrucks, fetchTrucks } from "./modules/truck.js";
+import {
+  displayTrucks,
+  fetchTrucks,
+  fetchTruckByImmatriculation,
+  displayTruckDetails,
+} from "./modules/truck.js";
 import { displayDrivers, fetchDrivers } from "./modules/driver.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -42,21 +47,38 @@ document.addEventListener("DOMContentLoaded", () => {
     displayTrucks();
     // Gestion de l'ajout d'un camion
     const addTruckForm = document.getElementById("addTruckForm");
-    addTruckForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const immatriculation = document.getElementById("immatriculation").value;
-      const marque = document.getElementById("marque").value;
-      const modele = document.getElementById("modele").value;
-      const year = parseInt(document.getElementById("year").value);
-
-      const newTruck = { immatriculation, marque, modele, year };
-      addTruckToLocalStorage(newTruck);
-      displayTrucks(); // Met à jour l'affichage
-      addTruckForm.reset(); // Réinitialise le formulaire
-    });
-  } else {
-    console.error("Formulaire d'ajout de camion introuvable !");
+    if (addTruckForm) {
+      addTruckForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const immatriculation =
+          document.getElementById("immatriculation").value;
+        const marque = document.getElementById("marque").value;
+        const modele = document.getElementById("modele").value;
+        const year = parseInt(document.getElementById("year").value);
+        const newTruck = {
+          immatriculation,
+          marque,
+          modele,
+          year,
+          statut: "Au dépôt",
+          consommation: 0,
+          missions: [],
+        };
+        addTruckToLocalStorage(newTruck);
+        displayTrucks(); // Met à jour l'affichage
+        addTruckForm.reset(); // Réinitialise le formulaire
+      });
+    }
   }
+
+  document.getElementById("truckList").addEventListener("click", (e) => {
+    const truckDiv = e.target.closest("div");
+    if (truckDiv) {
+      const immatriculation = truckDiv.innerText.split(",")[0].split(": ")[1];
+      const truck = fetchTruckByImmatriculation(immatriculation);
+      displayTruckDetails(truck);
+    }
+  });
 
   // Affiche les chauffeurs sur la page driver.html
   if (document.getElementById("driverList")) {

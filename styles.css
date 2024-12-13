@@ -126,3 +126,59 @@ footer {
   font-size: 0.9em;
   color: #777; /* Couleur de texte plus claire pour le pied de page */
 }
+
+#truckDetails {
+  background-color: #ffffff; /* Fond blanc pour le contraste */
+  border-radius: 10px; /* Coins arrondis */
+  padding: 20px; /* Espace autour du contenu */
+  margin: 20px 0; /* Marge en haut et en bas */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre douce pour un effet de profondeur */
+}
+
+/* Styles pour le titre */
+#truckDetails h3 {
+  color: #007bff; /* Couleur bleue pour le titre */
+  font-size: 1.8em; /* Taille de police du titre */
+  margin-bottom: 20px; /* Marge en bas du titre */
+  border-bottom: 2px solid #007bff; /* Ligne en dessous du titre pour délimiter */
+  padding-bottom: 10px; /* Espacement en bas du titre */
+}
+
+/* Styles pour les paragraphes */
+#truckDetails p {
+  color: #495057; /* Couleur du texte pour les paragraphes */
+  font-size: 1.1em; /* Taille de police des paragraphes */
+  margin: 10px 0; /* Marge en haut et en bas des paragraphes */
+}
+
+/* Styles pour les sous-titres */
+#truckDetails h4 {
+  color: #343a40; /* Couleur du texte pour les sous-titres */
+  font-size: 1.4em; /* Taille de police des sous-titres */
+  margin-top: 20px; /* Marge en haut des sous-titres */
+}
+
+/* Styles pour les listes */
+#truckDetails ul {
+  list-style-type: none; /* Supprime les puces de la liste */
+  padding: 0; /* Supprime le remplissage par défaut */
+}
+
+#truckDetails ul li {
+  background-color: #e9ecef; /* Couleur de fond pour les éléments de la liste */
+  border-radius: 5px; /* Arrondir les coins des éléments de la liste */
+  padding: 12px; /* Espace autour des éléments de la liste */
+  margin: 8px 0; /* Marge en haut et en bas des éléments de la liste */
+  transition: background-color 0.3s; /* Transition pour l'effet de survol */
+}
+
+/* Effet de survol pour les éléments de la liste */
+#truckDetails ul li:hover {
+  background-color: #ced4da; /* Couleur de fond au survol */
+}
+
+/* Style pour les valeurs des propriétés */
+#truckDetails p span {
+  font-weight: bold; /* Gras pour faire ressortir les valeurs */
+  color: #007bff; /* Couleur bleue pour les valeurs */
+}
