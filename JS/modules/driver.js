@@ -1,6 +1,6 @@
 export function fetchDrivers() {
-  const drivers = JSON.parse(localStorage.getItem("drivers"));
-  return drivers || [];
+  const drivers = JSON.parse(localStorage.getItem("drivers")) || [];
+  return drivers;
 }
 
 export function displayDrivers() {

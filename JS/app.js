@@ -98,7 +98,5 @@ document.addEventListener("DOMContentLoaded", () => {
         addDriverForm.reset(); // Réinitialise le formulaire
       });
     }
-  } else {
-    console.error("Formulaire d'ajout de chauffeur introuvable !");
   }
 });
