@@ -1,5 +1,5 @@
-import { displayTrucks } from "./modules/truck.js";
-import { displayDrivers } from "./modules/driver.js";
+import { displayTrucks, fetchTrucks } from "./modules/truck.js";
+import { displayDrivers, fetchDrivers } from "./modules/driver.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Fonction pour initialiser le localStorage avec des données de test
@@ -63,18 +63,20 @@ document.addEventListener("DOMContentLoaded", () => {
     displayDrivers();
     // Gestion de l'ajout d'un chauffeur
     const addDriverForm = document.getElementById("addDriverForm");
-    addDriverForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const nom = document.getElementById("nom").value;
-      const prenom = document.getElementById("prenom").value;
-      const numeroPermis = document.getElementById("numeroPermis").value;
+    if (addDriverForm) {
+      addDriverForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const nom = document.getElementById("nom").value;
+        const prenom = document.getElementById("prenom").value;
+        const numeroPermis = document.getElementById("numeroPermis").value;
 
-      const newDriver = { nom, prenom, numeroPermis };
-      addDriverToLocalStorage(newDriver);
-      displayDrivers(); // Met à jour l'affichage
-      addDriverForm.reset(); // Réinitialise le formulaire
-    });
+        const newDriver = { nom, prenom, numeroPermis };
+        addDriverToLocalStorage(newDriver);
+        displayDrivers(); // Met à jour l'affichage
+        addDriverForm.reset(); // Réinitialise le formulaire
+      });
+    }
   } else {
-    console.error("Formulaire d'ajout de chauffeur introuvable !")
+    console.error("Formulaire d'ajout de chauffeur introuvable !");
   }
 });
