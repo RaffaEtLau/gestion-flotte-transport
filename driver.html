@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chauffeurs</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Liste des chauffeurs</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Acceuil</a></li>
+          <li><a href="truck.html">Camions</a></li>
+          <li><a href="driver.html">Chauffeurs</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Chauffeurs Disponibles</h2>
+      <div id="driverList"></div>
+
+      <h3>Ajouter un nouveau chauffeur</h3>
+      <form id="addDriverForm">
+        <input type="text" id="nom" placeholder="Nom" required />
+        <input type="text" id="prenom" placeholder="Prénom" required />
+        <input
+          type="text"
+          id="numeroPermis"
+          placeholder="Numéro de permis"
+          required
+        />
+        <button type="submit">Ajouter le chauffeur</button>
+      </form>
+    </main>
+
+    <script type="module" src="./JS/app.js"></script>
+  </body>
+</html>
