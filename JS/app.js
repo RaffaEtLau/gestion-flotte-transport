@@ -4,7 +4,12 @@ import {
   fetchTruckByImmatriculation,
   displayTruckDetails,
 } from "./modules/truck.js";
-import { displayDrivers, fetchDrivers } from "./modules/driver.js";
+import {
+  displayDrivers,
+  fetchDrivers,
+  fetchDriverByName,
+  displayDriverDetails,
+} from "./modules/driver.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Fonction pour initialiser le localStorage avec des données de test
@@ -69,16 +74,16 @@ document.addEventListener("DOMContentLoaded", () => {
         addTruckForm.reset(); // Réinitialise le formulaire
       });
     }
-  }
 
-  document.getElementById("truckList").addEventListener("click", (e) => {
-    const truckDiv = e.target.closest("div");
-    if (truckDiv) {
-      const immatriculation = truckDiv.innerText.split(",")[0].split(": ")[1];
-      const truck = fetchTruckByImmatriculation(immatriculation);
-      displayTruckDetails(truck);
-    }
-  });
+    truckList.addEventListener("click", (e) => {
+      const truckDiv = e.target.closest("div");
+      if (truckDiv) {
+        const immatriculation = truckDiv.innerText.split(",")[0].split(": ")[1];
+        const truck = fetchTruckByImmatriculation(immatriculation);
+        displayTruckDetails(truck);
+      }
+    });
+  }
 
   // Affiche les chauffeurs sur la page driver.html
   if (document.getElementById("driverList")) {
@@ -98,5 +103,14 @@ document.addEventListener("DOMContentLoaded", () => {
         addDriverForm.reset(); // Réinitialise le formulaire
       });
     }
+
+    driverList.addEventListener("click", (e) => {
+      const driverDiv = e.target.closest("div");
+      if (driverDiv) {
+        const nom = driverDiv.innerText.split(",")[0].split(": ")[1];
+        const driver = fetchDriverByName(nom);
+        displayDriverDetails(driver);
+      }
+    });
   }
 });

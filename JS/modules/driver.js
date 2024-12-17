@@ -13,3 +13,20 @@ export function displayDrivers() {
     driverList.appendChild(driverDiv);
   });
 }
+
+export function displayDriverDetails(driver) {
+  const driverDetails = document.getElementById("driverDetails");
+  driverDetails.innerHTML = `
+        <h3>Détails du Chauffeur</h3>
+        <p>Nom: ${driver.nom}</p>
+        <p>Prénom: ${driver.prenom}</p>
+        <p>Numéro de Permis: ${driver.numeroPermis}</p>
+        <p>Mission en Cours: ${driver.mission || "Aucune mission en cours"}</p>
+    `;
+  driverDetails.style.display = "block";
+}
+
+export function fetchDriverByName(nom) {
+  const drivers = fetchDrivers();
+  return drivers.find((driver) => driver.nom === nom);
+}
