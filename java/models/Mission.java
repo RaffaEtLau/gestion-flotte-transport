@@ -1,56 +1,49 @@
 package java.models;
 
-public class Mission {
+import java.time.LocalDateTime;
+import java.time.Duration;
 
-  private Driver driver;
-  private Truck truck;
-  private String startLocation;
-  private String endLocation;
-  private int tempsConduite;
-  private int tempsRepos;
-  
-  public Mission(Driver driver, Truck truck, String startLocation, String endLocation, int tempsConduite, int tempsRepos) {
+public class Mission {
+    public enum Status {
+        NON_ATTRIBUEE, 
+        EN_PREPARATION, 
+        EN_COURS, 
+        TERMINEE, 
+        ANNULEE
+    }
+
+    private Driver driver;
+    private Truck truck;
+    private String startLocation;
+    private String endLocation;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    private int plannedDriveTime; // en minutes
+    private int plannedRestTime; // en minutes
+    private Status status;
+
+    public Mission(Driver driver, Truck truck, String startLocation, String endLocation, 
+                   LocalDateTime startTime, int plannedDriveTime, int plannedRestTime) {
         this.driver = driver;
         this.truck = truck;
         this.startLocation = startLocation;
         this.endLocation = endLocation;
-        this.tempsConduite = tempsConduite;
-        this.tempsRepos = tempsRepos;
+        this.startTime = startTime;
+        this.plannedDriveTime = plannedDriveTime;
+        this.plannedRestTime = plannedRestTime;
+        this.status = Status.NON_ATTRIBUEE;
     }
 
-    // Getters et Setters  
-    public Driver getDriver() {
-        return driver;
+    // Getters et setters existants, ajouter :
+    public Status getStatus() {
+        return status;
     }
 
-    public Truck getTruck() {
-        return truck;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
-    public String getStartLocation() {
-        return startLocation;
-    }
-
-    public String getEndLocation() {
-        return endLocation;
-    }
-
-    public int getTempsConduite() {
-        return tempsConduite;
-    }
-    public int getTempsRepos() {
-        return tempsRepos;
-    }
-
-    @Override  
-    public String toString() {
-        return "Mission{" +
-                "Conducteur =" + driver +
-                ", Camion =" + truck +
-                ", Lieu de départ ='" + startLocation + '\'' +
-                ", Lieu d'arrivée ='" + endLocation + '\'' +
-                ", Temps de conduite =" + tempsConduite + '\'' +
-                ", Temps de repos =" + tempsRepos +
-                '}';
+    public LocalDateTime getEndTime() {
+        return startTime.plusMinutes(plannedDriveTime);
     }
 }

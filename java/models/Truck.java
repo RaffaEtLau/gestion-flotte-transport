@@ -11,6 +11,7 @@ public class Truck {
   private String modele;
   private int year;
   private List<Driver> drivers;
+  private List<Mission> missions;
 
 
   public Truck(String immatriculation, String marque, String modele, int year) {
@@ -19,10 +20,19 @@ public class Truck {
     this.modele = modele;
     this.year = year;
     this.drivers = new ArrayList<>();
+    this.missions = new ArrayList<>();
   }
 
   public void addDriver(Driver driver) {
     this.drivers.add(driver);
+  }
+
+  public void addMission(Mission mission) {
+    missions.add(mission);
+  }
+
+  public List<Mission> getMissions() {
+    return missions;
   }
 
   public String getImmatriculation() {

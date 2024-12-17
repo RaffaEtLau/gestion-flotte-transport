@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tableau de Bord Chauffeur</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <h1>Tableau de Bord Chauffeur</h1>
+
+      <section class="driver-time-tracking">
+        <h2>Temps de Conduite et Repos</h2>
+        <form id="timeTrackingForm">
+          <div class="time-input">
+            <label>Temps de Conduite</label>
+            <input type="time" id="drivingTime" />
+          </div>
+          <div class="time-input">
+            <label>Temps de Repos</label>
+            <input type="time" id="restTime" />
+          </div>
+          <button type="submit">Enregistrer</button>
+        </form>
+      </section>
+
+      <section class="truck-selection">
+        <h2>Sélection du Camion</h2>
+        <select id="truckSelect">
+          <option value="">Sélectionner un camion</option>
+          <option value="truck1">Camion 1 - MAN TGX</option>
+          <option value="truck2">Camion 2 - Scania R450</option>
+          <option value="truck3">Camion 3 - Mercedes Actros</option>
+        </select>
+      </section>
+
+      <section class="fuel-ticket">
+        <h2>Ticket Carburant</h2>
+        <form id="fuelTicketForm">
+          <div class="fuel-input">
+            <label>Quantité de Carburant (L)</label>
+            <input type="number" id="fuelQuantity" step="0.1" />
+          </div>
+          <div class="fuel-input">
+            <label>Prix Total</label>
+            <input type="number" id="fuelPrice" step="0.01" />
+          </div>
+          <button type="submit">Soumettre Ticket</button>
+        </form>
+      </section>
+
+      <section class="driver-schedule">
+        <h2>Planning</h2>
+        <div id="scheduleCalendar">
+          <!-- Un calendrier simple pourrait être implémenté ici -->
+          <p>Votre planning apparaîtra ici</p>
+        </div>
+      </section>
+    </div>
+
+    <script type="module">
+      import { initDriverDashboard } from "./JS/modules/chauffeur.js";
+      initDriverDashboard();
+    </script>
+  </body>
+</html>

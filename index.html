@@ -20,10 +20,41 @@
     <main>
       <h2>Bienvenue dans le système de gestion de flotte !</h2>
       <p>Utilisez le menu pour naviguer entre les sections.</p>
+      <div class="login-container">
+        <div class="login-box">
+          <h3>Connexion</h3>
+          <form id="loginForm">
+            <input
+              type="text"
+              id="username"
+              placeholder="Nom d'utilisateur"
+              required
+            />
+            <input
+              type="password"
+              id="password"
+              placeholder="Mot de passe"
+              required
+            />
+            <div class="role-selection">
+              <h4>Sélectionnez votre rôle</h4>
+              <div class="role-options">
+                <label class="role-option">
+                  <input type="radio" name="role" value="driver" required />
+                  <span>Chauffeur</span>
+                </label>
+                <label class="role-option">
+                  <input type="radio" name="role" value="manager" required />
+                  <span>Gestionnaire</span>
+                </label>
+              </div>
+            </div>
+            <button type="submit">Se connecter</button>
+          </form>
+        </div>
+      </div>
     </main>
-    <footer>
-      
-    </footer>
+    <footer></footer>
 
     <script type="module" src="./JS/app.js"></script>
   </body>
