@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tableau de Bord Chauffeur</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="driver-container">
+      <nav class="driver-nav">
+        <h1>Mon Tableau de Bord</h1>
+        <div class="nav-links">
+          <a href="driver-dashboard.html" class="active">Dashboard</a>
+          <a href="driver-planning.html">Planning</a>
+        </div>
+        <div class="user-info">
+          <span id="userNameDisplay"></span>
+          <button id="logoutBtn">Déconnexion</button>
+        </div>
+      </nav>
+
+      <main class="driver-main">
+        <div class="dashboard-grid">
+          <!-- Section Temps de Travail -->
+          <section class="work-time">
+            <h2>Temps de Travail</h2>
+            <form id="timeTrackingForm">
+              <div class="time-input">
+                <label for="drivingTime">Temps de Conduite</label>
+                <input type="time" id="drivingTime" required />
+              </div>
+              <div class="time-input">
+                <label for="restTime">Temps de Repos</label>
+                <input type="time" id="restTime" required />
+              </div>
+              <div class="time-input">
+                <label for="workTime">Autres Activités</label>
+                <input type="time" id="workTime" required />
+              </div>
+              <button type="submit">Enregistrer</button>
+            </form>
+          </section>
+
+          <!-- Section Camion -->
+          <section class="truck-info">
+            <h2>Mon Camion</h2>
+            <form id="truckSelectionForm">
+              <select id="truckSelect" required>
+                <option value="">Sélectionner un camion</option>
+              </select>
+              <button type="submit">Confirmer</button>
+            </form>
+          </section>
+
+          <!-- Section Carburant -->
+          <section class="fuel-section">
+            <h2>Ticket Carburant</h2>
+            <form id="fuelTicketForm">
+              <div class="fuel-input">
+                <label for="fuelQuantity">Quantité (L)</label>
+                <input type="number" id="fuelQuantity" step="0.01" required />
+              </div>
+              <div class="fuel-input">
+                <label for="fuelPrice">Prix Total (€)</label>
+                <input type="number" id="fuelPrice" step="0.01" required />
+              </div>
+              <div class="fuel-input">
+                <label for="fuelStation">Station</label>
+                <input type="text" id="fuelStation" required />
+              </div>
+              <button type="submit">Enregistrer Ticket</button>
+            </form>
+          </section>
+
+          <!-- Section Mission en cours -->
+          <section class="current-mission">
+            <h2>Mission en Cours</h2>
+            <div id="currentMissionDisplay">
+              <!-- Rempli dynamiquement -->
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script type="module">
+      import { initDriverDashboard } from "./JS/modules/driver-dashboard.js";
+      import { logout } from "./JS/modules/auth.js";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initDriverDashboard();
+        document.getElementById("logoutBtn").addEventListener("click", logout);
+      });
+    </script>
+  </body>
+</html>

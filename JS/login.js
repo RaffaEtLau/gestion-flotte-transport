@@ -20,9 +20,9 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
     // Redirection selon le rôle
     if (role === "driver") {
-      window.location.href = "chauffeur.html";
+      window.location.href = "driver-dashboard.html";
     } else if (role === "manager") {
-      window.location.href = "driver.html";
+      window.location.href = "admin/drivers.html";
     }
   } catch (error) {
     alert("Identifiants ou rôle incorrect");
